@@ -1,0 +1,83 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  hello: "Hello world"
+
+  global:
+    delete: 'Delete'
+    public: 'Public'
+    private: 'Private'
+    status: 'Status'
+    email: 'E-mail'
+    username: 'Username'
+    password: 'Password'
+    password_confirmation: 'Password confirmation'
+
+  navbar:
+    login: 'Login'
+    logout: 'Logout'
+    dashboard: 'Dashboard'
+    settings: 'Settings'
+
+  # Landing page, a.k.a root page
+  landing:
+    title: "Let's generate"
+    enter_an_url: 'Enter an URL'
+    generate: 'Generate'
+    is_private: 'Is private?'
+
+  # URL page
+  show:
+    original_url: 'Original URL'
+    shortened_link: 'Shortened link'
+    clicked: 'Clicked'
+
+  dashboard:
+    sidebar: 'Sidebar'
+    analytics: 'Analytics'
+    latest_url: 'Latest URL'
+    table:
+      original_url: 'Original URL'
+      generated_url: 'Generated URL'
+      created_at: 'Created at'
+      action: 'Action'
+    successfully_deleted: 'Successfully deleted...'
+
+  session:
+    logged_in_ok: 'Successfully you logged in to your account'
+    logged_out_ok: 'Successfully you logged out. Thank you.'
+
+  error:
+    short_link_not_found: "We didn't find this link. Make sure you have a valid short link."
+    something_went_wrong: 'Something went wrong. Could you check the link for us?'
+    check_logs: 'Something went wrong. Please check your logs'
+    invalid_combination: 'Invalid email/password combination'

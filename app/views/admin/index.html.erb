@@ -1,0 +1,51 @@
+<%= provide(:title, 'Dashboard') %>
+
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+<div class="row">
+  <div class="col-12 col-md-3">
+    <h2><%= t 'dashboard.sidebar' %></h2>
+    <div class="list-group">
+      <%= link_to t('dashboard.analytics'),
+                  admin_index_path,
+                  class: 'list-group-item list-group-item-action' %>
+      <%= link_to t('dashboard.latest_url'),
+                  admin_index_path,
+                  class: 'list-group-item list-group-item-action' %>
+    </div>
+  </div>
+  <div class="col-12 col-md-9">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th><%= t 'dashboard.table.original_url' %></th>
+            <th><%= t 'dashboard.table.generated_url' %></th>
+            <th><%= t 'global.status' %></th>
+            <th><%= t 'dashboard.table.created_at' %></th>
+            <th><%= t 'dashboard.table.action' %></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @url.each do |url| %>
+          <tr>
+            <td><%= url.url %></td>
+            <td><%= url.url_id %></td>
+            <td><% if url.status %><%= t 'global.private' %><% else %><%= t 'global.public' %><% end %></td>
+            <td>
+              <time datetime="<%= url.created_at %>">
+                <%= url.created_at.strftime("%A, %b %d, %Y, %I:%M %p") %>
+              </time>
+            </td>
+            <td><%= link_to t('global.delete'), admin_path(url),
+                                      method: :delete,
+                                      data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

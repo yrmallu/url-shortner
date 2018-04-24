@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="<%= I18n.locale %>">
+  <head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="yet-another URL shorter for everyone."/>
+    <meta name="author" content="Yedukondala Reddy"/>
+
+    <title><%= yield :title %> | URL-Shortner</title>
+    <%= favicon_link_tag %>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'hdata-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-md navbar-light bg-light mb-4">
+        <div class="container">
+          <%= link_to 'URL-Shortner', root_path, class: 'navbar-brand' %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto"></ul>
+            <ul class="navbar-nav">
+              <% unless current_user %>
+                <li class="nav-item">
+                  <%= link_to t('navbar.login'), login_path, class: 'nav-link' %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to t('navbar.dashboard'), admin_index_path, class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to t('navbar.settings'), edit_profile_path(current_user.username), class: 'nav-link' %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to t('navbar.logout'), logout_path, class: 'nav-link' %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <div class="container h-100">
+      <%= yield %>
+    </div>
+
+    <footer class="modal-footer bg-light">
+      <div class="container">
+        <span class="text-muted">Copyright <%= Time.current.year %>, <a href="https://github.com/yrmallu/url-shortner">URL-Shortner</a></span>
+      </div>
+    </footer>
+
+    <% console if Rails.env.development? %>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.1/umd/popper.min.js" integrity="sha256-AoNQZpaRmemSTxMy9xcqXX5VLwI6IMPYugO7bFHOW+U=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha256-5+02zu5UULQkO7w1GIr6vftCgMfFdZcAHeDtFnKZsBs=" crossorigin="anonymous"></script>
+  </body>
+</html>

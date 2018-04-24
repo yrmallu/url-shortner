@@ -1,0 +1,16 @@
+<%= provide(:title, 'Edit') %>
+
+<h1>Edit profile</h1>
+<div class="d-flex justify-content-center">
+  <%= form_with model: @user, url: profile_path, method: :put do |form| %>
+    <%= t 'global.email' %>
+    <%= form.email_field :email, class: 'form-control' %>
+    <%= t 'global.username' %>
+    <%= form.text_field :username, class: 'form-control' %>
+    <%= t 'global.password' %>
+    <%= form.password_field :password, class: 'form-control' %>
+    <%= t 'global.password_confirmation' %>
+    <%= form.password_field :password_confirmation, class: 'form-control' %> <br>
+    <%= form.submit "Submit", class: 'btn btn-warning' %>
+  <% end %>
+</div>

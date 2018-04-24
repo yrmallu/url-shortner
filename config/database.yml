@@ -1,0 +1,45 @@
+# PostgreSQL. Versions 9.1 and up are supported.
+#
+# Install the pg driver:
+#   gem install pg
+# On OS X with Homebrew:
+#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
+# On OS X with MacPorts:
+#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
+# On Windows:
+#   gem install pg
+#       Choose the win32 build.
+#       Install PostgreSQL and put its /bin directory on your path.
+#
+# Configure Using Gemfile
+# gem 'pg'
+#
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: url_shortner_development
+  username: <%= ENV['OODB_USERNAME'] || 'kloopz' %>
+  password: <%= ENV['OODB_PASSWORD'] || 'kloopz'%>
+  host: <%= ENV['OODB_HOST'] || 'localhost' %>
+  port: 5432
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: url_shortner_test
+  username: <%= ENV['OODB_USERNAME'] || 'kloopz' %>
+  password: <%= ENV['OODB_PASSWORD'] || 'kloopz'%>
+  host: <%= ENV['OODB_HOST'] || 'localhost' %>
+  port: 5432
+
+production:
+  <<: *default
+  timeout: 5000
+

@@ -1,0 +1,23 @@
+<%= provide :title, t('navbar.login') %>
+
+<div class="d-flex justify-content-center">
+  <h1>Login</h1>
+</div>
+
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+<div class="d-flex justify-content-center">
+  <%= form_tag login_path do %>
+    <div class="form-group">
+      <%= t 'global.username' %>
+      <%= text_field_tag :username, "", class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= t 'global.password' %>
+      <%= password_field_tag :password, "", class: 'form-control' %>
+    </div>
+    <%= submit_tag "Submit", class: 'btn btn-primary' %>
+  <% end %>
+</div>

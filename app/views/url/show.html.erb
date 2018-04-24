@@ -1,0 +1,6 @@
+<%= provide(:title, @url.url ) %>
+<br>
+<p><strong><%= t 'show.original_url' %>:</strong> <%= @url.url %> </p>
+<p><strong><%= t 'show.shortened_link' %>:</strong> <%= link_to @url.url_id, redirect_path %> </p>
+<p><strong><%= t 'show.clicked' %> :</strong> <%= @url.click %> </p>
+<p><strong><%= t 'global.status' %>:</strong> <% if @url.status %><%= t 'global.private' %><% else %><%= t 'global.public' %><% end %> </p>

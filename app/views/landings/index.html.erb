@@ -1,0 +1,25 @@
+<%= provide(:title, t('landing.title')) %>
+
+<% flash.each do |message_type, message| %>
+  <div class="alert alert-<%= message_type %>"><%= message %></div>
+<% end %>
+
+<h1 class="text-center" style="padding-top: 80px;">URL-Shortner</h1>
+
+<div class="row h-100 justify-content-center align-items-center">
+  <div class="col-12 col-md-6">
+    <%= form_for :url, url: generate_path, local: true do |form| %>
+      <div class="input-group">
+        <div class="input-group mb-3">
+          <%= form.url_field :url, class: 'form-control', required: true, autofocus: true, placeholder: t('landing.enter_an_url'), 'aria-label': t('landing.enter_an_url'), 'aria-describedby': t('landing.enter_an_url') %>
+          <div class="input-group-append">
+            <%= form.submit t('landing.generate'), class: 'btn btn-outline-primary', 'aria-label': t('landing.generate'), 'aria-describedby': t('landing.generate')  %>
+          </div>
+        </div>
+      </div>
+      <div class="form-check text-right">
+        <%= form.check_box :status %> <%= t('landing.is_private') %>
+      </div>
+    <% end %>
+  </div>
+</div>
